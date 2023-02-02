@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MACHINE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas&display=swap" rel="stylesheet">
+    <style>
+
+body {
+   background-image: url('you.jpeg');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+      .data-box {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 555px;
+        height: auto;
+        margin: auto;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+
+  h2 {
+    color: black;
+    font-weight: bold;
+    font-family: 'Bebas', sans-serif;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  #data-display {
+    color: black;
+    font-size: 18px;
+    font-family: 'Bebas', sans-serif;
+    margin-top: 20px;
+  }
+
+  #file-input {
+    opacity: 0;
+}
+</style>
+  </head>
+  <body><input type="file" id="file-input" />
+    <div class="data-box">
+      <h2>MACHINE</h2>
+      
+      <p id="data-display"></p>
+    </div>
+    <script>
+      // Add event listener on file input
+      document.getElementById("file-input").addEventListener("change", function(event) {
+        // Fetch data from chosen file using FileReader API
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          // Display data in the HTML
+          document.getElementById("data-display").innerHTML = reader.result.replace(/\n/g, "<br>");
+        }
+        reader.readAsText(file);
+      });
+    </script>
+ </html>
